@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Mobile Translate</title>
+    <link type="text/css" rel="stylesheet" href="./css/register.css" />
+    <style>
+
+    </style>
+</head>
+<body>
+<h1>Mobile Translate</h1>
+<div class="container">
+    <h2>Register form</h2>
+    <div id="alertBox" class="alert"></div>
+    <form method="post" id="loginForm">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required>
+            <div class="error-message" id="username-error"></div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+            <div class="error-message" id="email-error"></div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+            <div class="error-message" id="password-error"></div>
+        </div>
+        <button type="submit" id="submitButton">Register</button>
+    </form>
+    <div class="form-footer">
+        By creating an account, you agree to our Terms of Service and Privacy Policy
+    </div>
+</div>
+
+<script src="./js/register.js" >
+</script>
+</body>
+</html>

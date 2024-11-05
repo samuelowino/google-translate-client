@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="./css/index.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <nav class="menu">
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./register.html">Register</a></li>
+                <li><a href="./how_to.html">General Info</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-section">
+        <div id="toast">
+            <span id="toastMessage"></span>
+        </div>
+
+        <h1>Translation Request</h1>
+
+        <div class="platform-selector">
+            <button class="platform-btn active" data-platform="ios">iOS</button>
+            <button class="platform-btn" data-platform="android">Android</button>
+        </div>
+
+        <form id="translateForm">
+            <div class="form-group">
+                <label for="workflow">Workflow Name</label>
+                <input type="text" id="workflow" value="translate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="languages">Target Languages (comma separated)</label>
+                <input type="text" id="languages" placeholder="en, es, fr" required>
+            </div>
+
+            <div class="form-group">
+                <label for="content" id="contentLabel">iOS Strings</label>
+                <textarea id="content" required></textarea>
+                <div id="iosExample" class="format-example">
+                    Example iOS format:<br>
+                    "welcome_message" = "Welcome to our app";<br>
+                    "login_button" = "Login";<br>
+                    "signup_prompt" = "Don't have an account?";
+                </div>
+                <div id="androidExample" class="format-example" style="display: none;">
+                    Example Android format:<br>
+                    &lt;resources&gt;<br>
+                    &nbsp;&nbsp;&lt;string name="welcome_message"&gt;Welcome to our app&lt;/string&gt;<br>
+                    &nbsp;&nbsp;&lt;string name="login_button"&gt;Login&lt;/string&gt;<br>
+                    &nbsp;&nbsp;&lt;string name="signup_prompt"&gt;Don not have an account?&lt;/string&gt;<br>
+                    &lt;/resources&gt;
+                </div>
+
+                <div class="error" id="formatError"></div>
+            </div>
+
+            <button type="submit">Submit Translation Request</button>
+        </form>
+        <div id="previewContainer" class="preview-container"></div>
+    </div>
+    <div class="footer">
+        <a href="terms_conditions.html">Terms of Service</a>
+    </div>
+</div>
+</body>
+<script>
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.js"></script>
+<script  src="./js/home.js"></script>
+</html>
