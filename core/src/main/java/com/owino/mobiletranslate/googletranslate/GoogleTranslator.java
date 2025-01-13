@@ -15,7 +15,9 @@ public class GoogleTranslator {
     private Translate translateClient;
 
     public GoogleTranslator() {
-        translateClient = TranslateOptions.getDefaultInstance().getService();
+        translateClient = TranslateOptions
+                .getDefaultInstance()
+                .getService();
     }
 
     public byte[] getTranslatedBytes(String originalText, String targetLanguage) {
