@@ -1,4 +1,6 @@
 module desktop {
     requires javafx.controls;
-    exports org.example;
+    requires java.logging;
+    exports org.mwangi.desktop;
+    exports org.mwangi.desktop.util;
 }
