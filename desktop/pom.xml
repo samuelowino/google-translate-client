@@ -28,5 +28,25 @@
          <artifactId>controlsfx</artifactId>
          <version>11.1.2</version>
      </dependency>
+     <dependency>
+         <groupId>io.reactivex.rxjava2</groupId>
+         <artifactId>rxjava</artifactId>
+         <version>2.2.21</version>
+     </dependency>
+     <dependency>
+         <groupId>io.reactivex.rxjava2</groupId>
+         <artifactId>rxjavafx</artifactId>
+         <version>2.11.0-RC16</version>
+     </dependency>
+     <dependency>
+         <groupId>com.google.dagger</groupId>
+         <artifactId>dagger</artifactId>
+         <version>2.54</version>
+     </dependency>
+     <dependency>
+         <groupId>io.github.mkpaz</groupId>
+         <artifactId>atlantafx-base</artifactId>
+         <version>2.0.1</version>
+     </dependency>
  </dependencies>
 </project>
