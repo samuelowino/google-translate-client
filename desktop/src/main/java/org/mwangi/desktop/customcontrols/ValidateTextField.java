@@ -42,15 +42,17 @@ public class ValidateTextField extends TextField {
         textProperty().addListener((_,_,newvalue) -> {
             String[] localities= newvalue.split(",");
             Optional<String> test= Arrays.stream(localities)
-                    .map(x ->validationPredicatesWithMessages.test(x)?null: "tot")
+                    .map(x ->validationPredicatesWithMessages.test(x)?null: "Required")
                     .filter(Objects::nonNull)
                     .findFirst();
             if(test.isPresent()){
+                pseudoClassStateChanged(STATE_DANGER,true);
                 Tooltip tooltip = new Tooltip(test.get());
                 tooltip.setShowDelay(Duration.millis(100));
                 tooltipProperty().set(tooltip);
                 isValidProperty.set(false);
             }else{
+                pseudoClassStateChanged(STATE_DANGER,false);
                 tooltipProperty().set(null);
                 isValidProperty.set(true);
             }

@@ -15,7 +15,7 @@ public class ValidateTextArea extends TextArea {
     public ValidateTextArea(Predicate<String> validationPredicatesWithMessages){
         textProperty().addListener((_,_,newvalue) -> {
 
-         Object test=validationPredicatesWithMessages.test(newvalue)?null: "Required";
+         Object test=validationPredicatesWithMessages.test(newvalue)?null: "Not Valid";
             if(test != null){
                 pseudoClassStateChanged(STATE_DANGER,true);
                 Tooltip tooltip = new Tooltip(test.toString());

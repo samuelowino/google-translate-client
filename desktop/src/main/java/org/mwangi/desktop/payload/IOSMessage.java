@@ -1,4 +1,4 @@
-package com.owino.mobiletranslate.rest.payload;
+package org.mwangi.desktop.payload;
 
 /**
  * represent structure of ios strings

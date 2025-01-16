@@ -1,4 +1,4 @@
-package org.example.findingout;
+package org.mwangi.desktop.dialogs;
 
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;

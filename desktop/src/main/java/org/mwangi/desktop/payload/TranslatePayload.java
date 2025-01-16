@@ -1,4 +1,4 @@
-package com.owino.mobiletranslate.rest.payload;
+package org.mwangi.desktop.payload;
 
 /**
  * represents  the relationship of what our payload could be

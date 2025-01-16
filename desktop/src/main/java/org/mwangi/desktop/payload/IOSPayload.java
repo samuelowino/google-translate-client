@@ -1,7 +1,6 @@
-package com.owino.mobiletranslate.rest.payload;
+package org.mwangi.desktop.payload;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * represents an ios translation request payload

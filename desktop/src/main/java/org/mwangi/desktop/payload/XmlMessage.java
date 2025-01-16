@@ -1,7 +1,6 @@
-package org.example.findingout;
+package org.mwangi.desktop.payload;
 
 import jakarta.xml.bind.annotation.XmlAttribute;
-
 import jakarta.xml.bind.annotation.XmlValue;
 
 public class XmlMessage {

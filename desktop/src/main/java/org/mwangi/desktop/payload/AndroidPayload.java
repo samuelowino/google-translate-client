@@ -1,7 +1,6 @@
-package com.owino.mobiletranslate.rest.payload;
+package org.mwangi.desktop.payload;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * This  represents android request payload
@@ -31,7 +30,7 @@ import java.util.Set;
 public record AndroidPayload(String workflow,
                              String targetOS,
                              List<String> distinctLanguages,
-                             List<XmlMessage> xmlContent)  implements TranslatePayload{
+                             List<XmlMessage> xmlContent)  implements TranslatePayload {
     @Override
     public String targetOS() {
         return "ANDROID";
