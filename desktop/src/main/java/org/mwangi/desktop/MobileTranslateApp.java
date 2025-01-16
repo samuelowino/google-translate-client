@@ -33,7 +33,6 @@ public class MobileTranslateApp extends Application {
         stage.setScene(
                 UI.scene(
                         ()->{
-
                             Region mainview=appFactory.mainView();
                             mainview.setPrefHeight(600);
                             mainview.setPrefWidth(700);
@@ -45,14 +44,11 @@ public class MobileTranslateApp extends Application {
         );
         stage.getScene().getStylesheets().add(getClass().getResource("/css/global.css").toExternalForm());
         stage.setResizable(false);
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                Executor executor= FxExecutor.getInstance();
-                executor.execute(() -> MainView.previewStage.close());
-                Platform.exit();
-                System.exit(0);
-            }
+        stage.setOnCloseRequest(_ -> {
+            Executor executor= FxExecutor.getInstance();
+            executor.execute(() -> MainView.previewStage.close());
+            Platform.exit();
+            System.exit(0);
         });
         stage.show();
     }

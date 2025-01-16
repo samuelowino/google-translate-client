@@ -22,11 +22,9 @@ public class ThemeManager {
         return currentTheme.theme;
     }
     public ThemeManager switchTheme(){
-        if(currentTheme == ThemeType.LIGHT){
-            currentTheme = ThemeType.DARK;
-        }else{
+        if(currentTheme == ThemeType.LIGHT) currentTheme = ThemeType.DARK;
+        else
             currentTheme = ThemeType.LIGHT;
-        }
         return  this;
     }
     public  ThemeManager  applyCurrentTheme(){

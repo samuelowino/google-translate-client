@@ -12,9 +12,7 @@ public class PersistentProperties {
     final Preferences prefs;
     final List<Runnable> onSave=new ArrayList<>(2);
     final List<Runnable> onReset=new ArrayList<>(2);
-    public PersistentProperties(){
-        prefs=Preferences.userNodeForPackage(this.getClass());
-    }
+
 
     public PersistentProperties(Class<?> clazz){
         prefs=Preferences.userNodeForPackage(Objects.requireNonNull(clazz));

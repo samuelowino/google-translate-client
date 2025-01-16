@@ -21,17 +21,19 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import static org.mwangi.desktop.download.zip.ZipManager.androidZipper;
 import static org.mwangi.desktop.download.zip.ZipManager.iosZipper;
 import static org.mwangi.desktop.util.Constants.IOS;
 
 
-//TODO!! REFTRACTOR CODE
+
 public class PreviewBox extends VBox {
     private TextArea textArea;
     private ToolBar toolBar;
     private Button previewPackageButton;
+    private static final Logger log=Logger.getLogger(PreviewBox.class.getSimpleName());
 
     public PreviewBox(){
            buildUI();
@@ -74,11 +76,11 @@ public class PreviewBox extends VBox {
         toolBar.getItems().addAll(butt);
     }
     private void buttonAction(TranslationResponse translationResponse,Button button){
-        if(translationResponse.targetOS().equals(IOS)){
+        if(translationResponse.targetOS().equals(IOS))
             textArea.setText(formatIosStr(translationResponse.translations().get(button.textProperty().getValue())));
-        }else {
+        else
             textArea.setText(toXml(translationResponse.translations().get(button.textProperty().getValue())));
-        }
+
     }
      private  void zipTranslations(DownloadProperties downloadProperties, TranslationResponse translationResponse){
          try {
@@ -87,8 +89,9 @@ public class PreviewBox extends VBox {
                  androidZipper(downloadProperties, translationResponse.translations());
          } catch (IOException e) {
              new NotificationDialog("Failed to save translations",e.getMessage()).showAndWait();
-             throw new RuntimeException(e);
+             log.warning(e.getMessage());
          }
+
      }
 
     private String formatIosStr(Map<String, String> translations)

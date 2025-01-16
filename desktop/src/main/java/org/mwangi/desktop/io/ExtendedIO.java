@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class ExtendedIO {
     private static final Logger log=Logger.getLogger(ExtendedIO.class.getSimpleName());
     private static final String serverIp =getProperties().getProperty("server.ip");
-    private static final int serverPort = Integer.parseInt(getProperties().getProperty("server.port"));;
+    private static final int serverPort = Integer.parseInt(getProperties().getProperty("server.port"));
     public final  static String LOGIN_URL= "http://%s:%d/login".formatted(serverIp, serverPort);
     public final  static  String REGISTER_URL= "http://%s:%d/register".formatted(serverIp, serverPort);
     public  final  static  String  TRANSLATE_URL= "http://%s:%d/translate".formatted(serverIp, serverPort);
@@ -38,13 +38,13 @@ public class ExtendedIO {
               <string name="login_button">Login</string>
               <string name="signup_prompt">Don not have an account?</string>
             </resources>""";
-    public final static Predicate<String> REQUIRED_IOS_VALIDATION_RULE = input -> !input.equals("") &&
+    public final static Predicate<String> REQUIRED_IOS_VALIDATION_RULE = input -> !input.isEmpty() &&
             input.lines()
                     .filter(line -> !line.trim().isEmpty())
                     .allMatch(line ->
                             line.matches("^\\s*\"[a-zA-Z_]+\"\\s*=\\s*\"[^\"]+\";\\s*"));
     public final static Predicate<String>  REQUIRED_ANDROID_VALIDATION_RULE = input -> {
-        if(input.equals("")) return false;
+        if(input.isEmpty()) return false;
         String outerPattern = "^<resources>\\s*(.+?)\\s*</resources>$";
         String stringPattern = "\\s*<string\\s+name=\"([a-zA-Z_]+)\">([^<]+)</string>\\s*";
         if (!input.replaceAll("\\s+", " ").trim().matches(outerPattern)) {
@@ -97,7 +97,7 @@ public class ExtendedIO {
             prop.load(ExtendedIO.class.getClassLoader().getResourceAsStream("application.properties"));
             return prop;
         } catch (IOException e) {
-            e.printStackTrace();
+            log.warning(e.getMessage());
         }
         return null;
     }

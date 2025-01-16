@@ -26,14 +26,7 @@ public class DownloadDialog extends Dialog<DownloadProperties> {
     private final SimpleBooleanProperty isValidPath=new SimpleBooleanProperty();
     private final SimpleStringProperty fileNameProperty=new SimpleStringProperty();
     private final SimpleBooleanProperty isValidName=new SimpleBooleanProperty();
-    Predicate<String> REQUIRED_VALIDATION_RULE=p-> os.contains("win")? (!p.contains("/") && WINDOWS_DIR.matcher(p).matches())
-            : (!p.contains("\\") && UNIX_DIR.matcher(p).matches());
-   Predicate<String> REQUIRED_VALIDATION_RULE2= fileName ->
-           fileName != null && !fileName.isBlank()
-                   && !fileName.matches(".*[\\\\/:*?\"<>|].*")
-                   && !fileName.matches(".*[/\0].*")
-                   && fileName.length() <= 255
-                   && !fileName.endsWith(".");
+
     public DownloadDialog(){
         this.setTitle("Enter path and filename to save files");
         ((Stage) this.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResource("/icons/download_icon.png").toString()));
@@ -76,6 +69,14 @@ public class DownloadDialog extends Dialog<DownloadProperties> {
             return null;
         });
     }
+    Predicate<String> REQUIRED_VALIDATION_RULE=p-> os.contains("win")? (!p.contains("/") && WINDOWS_DIR.matcher(p).matches())
+            : (!p.contains("\\") && UNIX_DIR.matcher(p).matches());
+    Predicate<String> REQUIRED_VALIDATION_RULE2= fileName ->
+            fileName != null && !fileName.isBlank()
+                    && !fileName.matches(".*[\\\\/:*?\"<>|].*")
+                    && !fileName.matches(".*[/\0].*")
+                    && fileName.length() <= 255
+                    && !fileName.endsWith(".");
     private static final Pattern WINDOWS_DIR = Pattern.compile(
             "^(?:[A-Za-z]:)?\\\\?[^<>:\"/\\\\|?*]+(?:\\\\[^<>:\"/\\\\|?*]+)*\\\\?$"
     );
