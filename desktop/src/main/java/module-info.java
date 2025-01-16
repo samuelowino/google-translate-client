@@ -4,7 +4,9 @@ module desktop {
     requires atlantafx.base;
     requires io.reactivex.rxjava2;
     requires jakarta.inject;
-
+    requires  dagger;
+    requires java.compiler;
+    requires javax.inject;
     requires jakarta.xml.bind;
     exports org.mwangi.desktop;
     exports org.mwangi.desktop.util;
