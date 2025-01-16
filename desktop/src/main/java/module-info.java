@@ -8,6 +8,7 @@ module desktop {
     requires java.compiler;
     requires javax.inject;
     requires jakarta.xml.bind;
+    requires java.prefs;
     exports org.mwangi.desktop;
     exports org.mwangi.desktop.util;
 }
