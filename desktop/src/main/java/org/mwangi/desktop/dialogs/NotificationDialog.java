@@ -14,7 +14,7 @@ public class NotificationDialog extends Alert {
     public NotificationDialog(String message, String description){
         super(AlertType.ERROR);
         ((Stage) this.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResource("/icons/notification_icon.png").toString()));
-        setResizable(true);
+        setResizable(false);
         setTitle("Notification");
         setHeaderText(message);
         setContentText(description ==null?"Something went wrong":description);

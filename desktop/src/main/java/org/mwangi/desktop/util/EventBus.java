@@ -54,7 +54,6 @@ public class EventBus {
         return activityCount;
     }
     public  void pub(TranslationResponse res){
-
         responses.onNext(res);
     }
 
