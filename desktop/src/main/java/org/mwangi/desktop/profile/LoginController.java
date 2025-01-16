@@ -5,7 +5,6 @@ import jakarta.inject.Inject;
 import javafx.application.Platform;
 import okhttp3.*;
 import org.mwangi.desktop.dialogs.NotificationDialog;
-import org.mwangi.desktop.dialogs.ProfileDialog;
 import org.mwangi.desktop.payload.ErrorResponse;
 import org.mwangi.desktop.payload.ValidResponse;
 import org.mwangi.desktop.properties.PersistentProperties;

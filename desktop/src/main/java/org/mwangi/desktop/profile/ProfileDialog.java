@@ -1,4 +1,4 @@
-package org.mwangi.desktop.dialogs;
+package org.mwangi.desktop.profile;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
@@ -16,9 +16,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import org.mwangi.desktop.customcontrols.ValidateTextField;
-import org.mwangi.desktop.profile.LoginProfileDetails;
-import org.mwangi.desktop.profile.ProfileDetails;
-import org.mwangi.desktop.profile.RegisterProfileDetails;
 import org.mwangi.desktop.util.UI;
 
 import java.util.Map;
