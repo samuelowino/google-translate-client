@@ -1,4 +1,4 @@
-package org.mwangi.desktop.util;
+package org.mwangi.desktop;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 public class ThreadNameFormatter extends Formatter {
     private String format;
     public ThreadNameFormatter(){
-        this.format= LogManager.getLogManager().getProperty("org.mwangi.desktop.util.ThreadNameFormatter.format");
+        this.format= LogManager.getLogManager().getProperty("org.mwangi.desktop.ThreadNameFormatter.format");
     }
 
     public void setFormat(String format) {

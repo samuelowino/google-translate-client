@@ -13,6 +13,10 @@ module desktop {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.core;
     requires com.google.gson;
+    requires java.xml;
+    opens  org.mwangi.desktop.profile to jakarta.xml.bind,com.google.gson,com.fasterxml.jackson.databind;
+    opens  org.mwangi.desktop.mainview to jakarta.xml.bind,com.google.gson,com.fasterxml.jackson.databind;
+
+    opens  org.mwangi.desktop.payload to jakarta.xml.bind,com.google.gson,com.fasterxml.jackson.databind;
     exports org.mwangi.desktop;
-    exports org.mwangi.desktop.util;
 }

@@ -25,10 +25,6 @@ public class NetWorkModule {
     public ObjectMapper provideObjectMapper(){
         return  new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
-    @Provides
-    @Singleton
-    public Gson provideGson(){
-        return  new Gson();
-    }
+
 
 }
