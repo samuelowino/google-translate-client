@@ -46,7 +46,6 @@ public class ZipManager {
                 }
                 String iosPath = "ios/%s.lproj/Localizable.strings".formatted(langEntry.getKey());
                 zout.putNextEntry(new ZipEntry(iosPath));
-
                 zout.write(iosStrings.toString().getBytes(StandardCharsets.UTF_8));
                 zout.closeEntry();
             }

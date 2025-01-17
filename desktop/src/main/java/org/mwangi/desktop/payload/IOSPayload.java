@@ -32,8 +32,5 @@ public record IOSPayload(String workflow,
                          String targetOS,
                          List<String> distinctLanguages,
                          List<IOSMessage> iosContent) implements TranslatePayload {
-    @Override
-    public String targetOS() {
-        return "IOS";
-    }
+
 }

@@ -25,7 +25,7 @@ public class LoginController {
     private static  final Logger log=Logger.getLogger(LoginController.class.getSimpleName());
   
     private static final String API_KEY ="";
-   public static  final Predicate<Integer> TYPE_NOTIF=s -> s >199 && s < 300;
+   public static  final Predicate<Integer> TYPE_NOTIFICATION=s -> s >199 && s < 300;
     private final OkHttpClient client;
     private final ObjectMapper json;
     private final EventBus eventBus;
@@ -56,12 +56,11 @@ public class LoginController {
         }));
     }
     private  void checkResponse(Response response) throws IOException {
-        if (TYPE_NOTIF.test(response.code())) handleProfile(response);
+        if (TYPE_NOTIFICATION.test(response.code())) handleProfile(response);
         else handleError(response);
     }
     private void handleError(Response response) throws IOException {
-        String responseJson = response.body().string();
-        ErrorResponse e = json.readValue(responseJson, ErrorResponse.class);
+        ErrorResponse e = json.readValue(response.body().string(), ErrorResponse.class);
         CompletableFuture.runAsync(() -> new NotificationDialog(e.error(), e.details()).show(), Platform::runLater);
     }
 
@@ -75,7 +74,7 @@ public class LoginController {
                 case CREATED:
                     ValidResponse val2 = json.readValue(response.body().string(), ValidResponse.class);
                     CompletableFuture.runAsync(() -> new NotificationDialog(val2.response(), val2.details()).showAndWait(), Platform::runLater)
-                            .thenAccept((v) -> new ProfileDialog().showAndWait().ifPresent(this::checkProfile));
+                            .thenAccept((_) -> new ProfileDialog().showAndWait().ifPresent(this::checkProfile));
                     break;
                 default:
                     throw new IOException();

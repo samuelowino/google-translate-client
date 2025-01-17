@@ -49,7 +49,7 @@ public class MainView extends VBox {
    @Inject
     public MainView(LoginController loginController, TranslateController translateController, EventBus eventBus, ThemeManager themeManager, ActivityIndicator activityIndicator) {
         this.bus=eventBus;
-        translateController.setPainter(this::preview);
+        translateController.setPreview(this::preview);
         this.getChildren().addAll(
                 UI.toolBar(toolBar -> {
                     toolBar.setOrientation(Orientation.HORIZONTAL);
@@ -60,13 +60,13 @@ public class MainView extends VBox {
                                 button.setText("Profile");
                                 button.setOnAction(_ -> new ProfileDialog().showAndWait().ifPresent(loginController::checkProfile));
                             }),
-                            UI.create(ToggleButton::new,tg->{
-                                tg.setGraphic(UI.icon("/icons/earth_night.png"));
-                                tg.getStyleClass().addAll(BUTTON_ICON);
-                                tg.setOnAction(_->{
+                            UI.create(ToggleButton::new,toggleButton->{
+                                toggleButton.setGraphic(UI.icon("/icons/earth_night.png"));
+                                toggleButton.getStyleClass().addAll(BUTTON_ICON);
+                                toggleButton.setOnAction(_->{
                                     themeManager.switchTheme().applyCurrentTheme();
                                     String icon=themeManager.getCurrentTheme().isDarkMode()?"/icons/weather_sun.png":"/icons/earth_night.png";
-                                    tg.setGraphic(UI.icon(icon));
+                                    toggleButton.setGraphic(UI.icon(icon));
                                     Window.getWindows().forEach(window -> themeManager.applyPseudoClasses(window.getScene().getRoot()));
                                 });
                             })
@@ -150,7 +150,8 @@ public class MainView extends VBox {
         previewStage=UI.create(Stage::new,stage -> {
            stage.setTitle("translation preview");
            stage.initModality(Modality.NONE);
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/icons/preview_icon.png")).toString()));
+           stage.setResizable(false);
+           stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/icons/preview_icon.png")).toString()));
            stage.setScene(new Scene(new PreviewBox()));
         });
     }

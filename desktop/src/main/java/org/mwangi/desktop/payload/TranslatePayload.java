@@ -7,5 +7,5 @@ package org.mwangi.desktop.payload;
  * </p>
  */
 public sealed interface TranslatePayload permits AndroidPayload,IOSPayload {
-    String targetOS();
+
 }

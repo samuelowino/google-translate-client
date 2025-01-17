@@ -41,8 +41,8 @@ public class PreviewBox extends VBox {
 
     private  void buildUI(){
             textArea = new TextArea();
-            toolBar = UI.create(ToolBar::new, tb -> {
-                tb.setOrientation(Orientation.HORIZONTAL);
+            toolBar = UI.create(ToolBar::new, toolBar -> {
+                toolBar.setOrientation(Orientation.HORIZONTAL);
             });
             previewPackageButton = new Button("preview and Package");
             this.getChildren().addAll(
@@ -52,28 +52,17 @@ public class PreviewBox extends VBox {
                     previewPackageButton
             );
     }
-    public void updateStuff(TranslationResponse p){
-        if(p == null){
-            return;
-        }
-        previewPackageButton.setOnAction(_ ->{
-            new DownloadDialog().showAndWait().ifPresent(downloadProperties -> {
-               zipTranslations(downloadProperties,p);
-            });
-        });
-
-        List<Button> butt = p.translations().keySet()
+    public void updateStuff(TranslationResponse translationResponse){
+        if(translationResponse == null) return;
+        previewPackageButton.setOnAction(_ -> new DownloadDialog().showAndWait()
+                .ifPresent(downloadProperties -> zipTranslations(downloadProperties,translationResponse)));
+        List<Button> buttons = translationResponse.translations().keySet()
                 .stream()
                 .map(Button::new)
                 .toList();
-
-        for (Button x : butt) {
-            x.setOnAction(_ -> {
-                buttonAction(p,x);
-            });
-        }
+        for (Button button : buttons) button.setOnAction(_ -> buttonAction(translationResponse,button));
         toolBar.getItems().clear();
-        toolBar.getItems().addAll(butt);
+        toolBar.getItems().addAll(buttons);
     }
     private void buttonAction(TranslationResponse translationResponse,Button button){
         if(translationResponse.targetOS().equals(IOS))
@@ -96,13 +85,13 @@ public class PreviewBox extends VBox {
 
     private String formatIosStr(Map<String, String> translations)
     {
-        List<IOSMessage> x = translations.entrySet().stream()
+        List<IOSMessage> iosMessageList = translations.entrySet().stream()
                 .map(entry -> new IOSMessage(entry.getKey(), entry.getValue()))
                 .toList();
-        StringBuilder b=new StringBuilder();
-        x.forEach((p)-> b.append(p.key()).append(" = ").append(p.content()).append(";\n"));
+        StringBuilder s=new StringBuilder();
+        iosMessageList.forEach((p)-> s.append(p.key()).append(" = ").append(p.content()).append(";\n"));
         StringWriter write =new StringWriter();
-        write.append(b);
+        write.append(s);
         return write.toString();
     }
     private String toXml(Map<String, String> translations) {

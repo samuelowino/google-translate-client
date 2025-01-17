@@ -15,6 +15,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
+import org.mwangi.desktop.customcontrols.ValidatePasswordField;
 import org.mwangi.desktop.customcontrols.ValidateTextField;
 import org.mwangi.desktop.util.UI;
 
@@ -34,7 +35,7 @@ public class ProfileDialog extends Dialog<ProfileDetails> {
     private final BooleanProperty loginTabSelectedProperty=new SimpleBooleanProperty();
     private final BooleanProperty registerTabSelectedProperty=new SimpleBooleanProperty();
     public ProfileDialog(){
-        setTitle("Login or account creation");
+        setTitle("Login or Account creation");
         getDialogPane().setMinWidth(500);
         ((Stage) this.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResource("/icons/login_icon.png").toString()));
         getDialogPane().setContent(UI.create(TabPane::new, Tabpane->{
@@ -55,7 +56,7 @@ public class ProfileDialog extends Dialog<ProfileDetails> {
                                 profileNameValidProperty.bind(usernameTextField.isValidPropertyProperty());
                              }
                         ));
-                gridPane.addRow(1,UI.boldLabel("password"),UI.create(()-> new ValidateTextField(REQUIRED_VALIDATION_RULE),
+                gridPane.addRow(1,UI.boldLabel("password"),UI.create(()-> new ValidatePasswordField(REQUIRED_VALIDATION_RULE),
                         passwordTextField->{
                             passwordProperty.bindBidirectional(passwordTextField.textProperty());
                             passwordValidProperty.bind(passwordTextField.isValidPropertyProperty());
@@ -86,11 +87,10 @@ public class ProfileDialog extends Dialog<ProfileDetails> {
         if(okButton != null){
               okButton.disableProperty().bind(
                       Bindings.createBooleanBinding(()->{
-                          if(loginTabSelectedProperty.get()){
+                          if(loginTabSelectedProperty.get())
                               return !(profileNameValidProperty.get() && passwordValidProperty.get());
-                          } else if (registerTabSelectedProperty.get()) {
+                          else if (registerTabSelectedProperty.get())
                               return !(profileNameValidProperty.get() && passwordValidProperty.get() && emailValidProperty.get());
-                          }
                           return true;
                       },loginTabSelectedProperty,registerTabSelectedProperty,profileNameValidProperty,passwordValidProperty,emailValidProperty)
               );

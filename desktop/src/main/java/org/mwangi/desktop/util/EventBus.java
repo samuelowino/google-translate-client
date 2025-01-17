@@ -53,11 +53,11 @@ public class EventBus {
     public SimpleIntegerProperty activityCountProperty() {
         return activityCount;
     }
-    public  void pub(TranslationResponse res){
+    public  void publisher(TranslationResponse res){
         responses.onNext(res);
     }
 
-    public Observable<TranslationResponse> getD(){
+    public Observable<TranslationResponse> getPublished(){
        return responses;
     }
 

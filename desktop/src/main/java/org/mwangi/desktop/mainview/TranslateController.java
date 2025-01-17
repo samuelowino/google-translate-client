@@ -36,7 +36,7 @@ public class TranslateController {
 
     private final PersistentProperties prefs;
     private final LoginController loginController;
-    private Consumer<TranslationResponse> painter;
+    private Consumer<TranslationResponse> preview;
 
    private final Logger log =Logger.getLogger(TranslateController.class.getSimpleName());
 
@@ -47,9 +47,9 @@ public class TranslateController {
       this.client=client;
       this.json=objectMapper;
       this.prefs=prefs;
-      eventBus.getD().subscribe(val->{
-          if(painter !=null){
-              painter.accept(val);
+      eventBus.getPublished().subscribe(val->{
+          if(preview !=null){
+              preview.accept(val);
           }
       });
   }
@@ -64,8 +64,8 @@ public class TranslateController {
         }));
 
     }
-    private   Request  sendRequest(TranslatePayload t){
-        RequestBody body = RequestBody.create(gson.toJson(t), MediaType.get("application/json"));
+    private   Request  sendRequest(TranslatePayload translatePayload){
+        RequestBody body = RequestBody.create(gson.toJson(translatePayload), MediaType.get("application/json"));
         return new Request.Builder().url(TRANSLATE_URL).post(body).header("X-API-KEY", prefs.getString(API_KEY).getValue()).build();
     }
     private   void handleLoginError(Throwable throwable){
@@ -127,14 +127,16 @@ private String poll(String job_id) {
     return responsejson;
 }
 
-    public void setPainter(Consumer<TranslationResponse> painter) {
-        this.painter = painter;
+    public void setPreview(Consumer<TranslationResponse> preview) {
+        this.preview = preview;
     }
+
+
 
     private  void Publisher(String sjson){
     try {
         TranslationResponse translationResponse=json.readValue(sjson,TranslationResponse.class);
-        eventBus.pub(translationResponse);
+        eventBus.publisher(translationResponse);
         } catch (JsonProcessingException e) {
         throw new RuntimeException(e);
        }
