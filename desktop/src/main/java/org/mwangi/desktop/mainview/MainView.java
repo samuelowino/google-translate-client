@@ -78,10 +78,10 @@ public class MainView extends VBox {
                     pane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
                     pane.getTabs().addAll(
                             UI.create(Tab::new,  tab -> {
-                                tab.setText("iOS Translation");
+                                tab.setText("IOS Translation");
                                 tab.setContent(UI.create(VBox::new,p1->{
                                     p1.getChildren().addAll(
-                                            UI.boldLabel("Target Languages (comma separated)"),
+                                            UI.boldLabel("Target Languages (comma separated) eg ar,fr"),
                                             UI.create(()->new ValidateTextField(REQUIRED_VALIDATION_RULE), localities->{
                                                 localityProperty.bindBidirectional(localities.textProperty());
                                                 isValidlocalityProperty.bind(localities.isValidPropertyProperty());
@@ -114,7 +114,7 @@ public class MainView extends VBox {
                                 tab.setText("Android Translation");
                                 tab.setContent(UI.create(VBox::new,p1->{
                                     p1.getChildren().addAll(
-                                            UI.boldLabel("Target Languages (comma separated)"),
+                                            UI.boldLabel("Target Languages (comma separated) eg ar,fr"),
                                             UI.create(()->new ValidateTextField(REQUIRED_VALIDATION_RULE),localities->{
                                                 localityProperty.bindBidirectional(localities.textProperty());
                                                 isValidlocalityProperty.bind(localities.isValidPropertyProperty());

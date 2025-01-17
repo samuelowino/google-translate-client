@@ -24,7 +24,6 @@ public class MobileTranslateApp extends Application {
 
     @Override
     public void start(Stage stage){
-        log.info("APP HAS STARTED");
         System.setProperty("prism.lcdtext", "false");
        AppFactory appFactory=DaggerAppFactory.builder().build();
        appFactory.provideThemeManager().applyCurrentTheme();
@@ -51,6 +50,7 @@ public class MobileTranslateApp extends Application {
             System.exit(0);
         });
         stage.show();
+        log.info("MOBILE TRANSLATE APP HAS STARTED");
     }
 
 }
