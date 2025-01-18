@@ -69,9 +69,8 @@ public class TranslateController {
         return new Request.Builder().url(TRANSLATE_URL).post(body).header("X-API-KEY", prefs.getString(API_KEY).getValue()).build();
     }
     private   void handleLoginError(Throwable throwable){
-        if(throwable.getCause() instanceof StatusException){
+        if(throwable.getCause() instanceof StatusException)
             CompletableFuture.runAsync(()->new ProfileDialog().showAndWait().ifPresent(loginController::checkProfile),Platform::runLater);
-        }
     }
     private   String checkResponse(Request request){
         String jobId;
@@ -89,7 +88,6 @@ public class TranslateController {
                     throw new CompletionException(
                             new StatusException(e.details())
                     );
-
                 default:
                     throw new CompletionException(
                             new RuntimeException()

@@ -74,11 +74,11 @@ public class ExtendedIO {
                 })
                 .collect(Collectors.toList());
     }
-    public static Resources fromXml(String xmlo) {
+    public static Resources fromXml(String xml) {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Resources.class);
             Unmarshaller jaxbContextUnmarshaller = jaxbContext.createUnmarshaller();
-            return (Resources) jaxbContextUnmarshaller.unmarshal(new StringReader(xmlo));
+            return (Resources) jaxbContextUnmarshaller.unmarshal(new StringReader(xml));
         } catch (JAXBException e) {
             return null;
         }

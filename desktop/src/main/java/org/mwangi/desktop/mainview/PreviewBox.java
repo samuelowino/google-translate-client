@@ -44,7 +44,7 @@ public class PreviewBox extends VBox {
             toolBar = UI.create(ToolBar::new, toolBar -> {
                 toolBar.setOrientation(Orientation.HORIZONTAL);
             });
-            previewPackageButton = new Button("preview and Package");
+            previewPackageButton = new Button("preview and save");
             this.getChildren().addAll(
                     UI.boldLabel("Translation preview"),
                     toolBar,
