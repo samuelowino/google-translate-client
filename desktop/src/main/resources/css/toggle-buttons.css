@@ -1,0 +1,55 @@
+
+.toggle-button-1 {
+    -fx-background-color: -color-chart-1-alpha20;
+}
+.toggle-button-1:selected {
+    -fx-background-color: -color-chart-1;
+}
+.toggle-button-2 {
+    -fx-background-color: -color-chart-2-alpha20;
+}
+.toggle-button-2:selected {
+    -fx-background-color: -color-chart-2;
+}
+
+.toggle-button-3 {
+    -fx-background-color: -color-chart-3-alpha20;
+}
+.toggle-button-3:selected {
+    -fx-background-color: -color-chart-3;
+}
+
+.toggle-button-4 {
+    -fx-background-color: -color-chart-4-alpha20;
+}
+.toggle-button-4:selected {
+    -fx-background-color: -color-chart-4;
+}
+
+.toggle-button-5 {
+    -fx-background-color: -color-chart-5-alpha20;
+}
+.toggle-button-5:selected {
+    -fx-background-color: -color-chart-5;
+}
+
+.toggle-button-6 {
+    -fx-background-color: -color-chart-6-alpha20;
+}
+.toggle-button-6:selected {
+    -fx-background-color: -color-chart-6;
+}
+
+.toggle-button-7 {
+    -fx-background-color: -color-chart-7-alpha20;
+}
+.toggle-button-7:selected {
+    -fx-background-color: -color-chart-7;
+}
+
+.toggle-button-8 {
+    -fx-background-color: -color-chart-8-alpha20;
+}
+.toggle-button-8:selected {
+    -fx-background-color: -color-chart-8;
+}

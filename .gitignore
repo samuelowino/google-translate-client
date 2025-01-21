@@ -15,3 +15,5 @@ src/main/resources/files
 .DS_Store
 *.DS_Store
 /auth.db
+/mobile-translate/desktop/src/main/resources/logs
+/mobile-translate/desktop/src/main/resources/logs/fx.log.lck
