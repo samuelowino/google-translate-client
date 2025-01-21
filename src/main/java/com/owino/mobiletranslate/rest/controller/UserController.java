@@ -67,7 +67,7 @@ public class UserController {
                insertStmt.executeUpdate();
 
                conn.commit();
-               ctx.status(HttpStatus.CREATED).result("User registered successfully");
+               ctx.status(HttpStatus.CREATED).json(new ValidResponse(200,"Requested accepted","User registered successfully"));
 
            } catch (SQLException e) {
                conn.rollback();
@@ -98,7 +98,7 @@ public class UserController {
                        int userId = rs.getInt("id");
 
                        java.lang.String apiKey = generateApiKey(userId, conn);
-                       conn.commit();  // Commit transaction
+                       conn.commit();
                        ctx.json(new ValidResponse(200,"Login successful. Your API key is: ",apiKey));
 
                    } else {
